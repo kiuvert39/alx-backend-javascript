@@ -1,11 +1,16 @@
-export default function iterateThroughObject(reportWithIterator) {
-  const employeeNames = [];
+export default function createIteratorObject(report) {
+  const employees = Object.values(report.allEmployees).flat(); // Flatten the employee arrays
+  let index = 0;
 
-  // Using for...of to iterate through the iterator
-  for (const employee of reportWithIterator) {
-    employeeNames.push(employee); // Collect employee names
-  }
-
-  // Return the names joined by ' | '
-  return employeeNames.join(' | ');
+  return {
+    next: function() {
+      if (index < employees.length) {
+        return { value: employees[index++], done: false };
+      }
+      return { done: true };
+    },
+    [Symbol.iterator]: function() {
+      return this;
+    },
+  };
 }
