@@ -1,3 +1,3 @@
-const calculateNunber = (a, b) => Math.round(a) + Math.round(b);
+const calculateNumber = (a, b) => Math.round(a) + Math.round(b);
 
-module.exports = calculateNunber;
+module.exports = calculateNumber;
